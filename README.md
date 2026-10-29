@@ -177,6 +177,18 @@ npm --prefix frontend run build
 
 Tests block real HTTP transports and use mocks, including both actual SDKs against mock transports. They check transmitted schemas, local output limits, provider selection, quota/rate separation, Anthropic overload, selected-model lookup, optional probe behavior, concurrent deduplication, field-name-only diagnostics, and hidden secret entry using temporary synthetic files. React tests cover sample submission, results, provider badges, billing guidance, references, JSON, non-JSON gateway errors, access-code handling, and replay IDs. `pytest` belongs to `requirements-dev.txt`; the Docker image installs only runtime dependencies from `requirements.txt`. GitHub Actions runs checks only; it does not host or schedule the application.
 
+### Verification record (2026-10-29)
+
+| Check | Result |
+|---|---|
+| CI (pytest, check, demo, React tests, build) | [Passed](https://github.com/egecaglayan-web/structured-ai-workflow/actions/runs/40952986484) |
+| Live end-to-end run with Anthropic Claude (`claude-haiku-5-5`) | Passed: five browser submissions, all processed live with reference evidence, no fallbacks |
+| Owner alert to a Slack Incoming Webhook | Passed: one test alert delivered |
+| Live OpenAI generation | Not run; covered by tests against mocked API responses |
+| Docker image build and hosted deployment | Not run |
+
+All live checks used fictional sample text and dedicated test accounts.
+
 ## File map
 
 ```text
